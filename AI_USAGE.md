@@ -36,7 +36,7 @@ The raw, automatic prompt logs (one file per team member) live in [`docs/ai-usag
 - **Prompt:** Literal transcription in [`docs/ai-usage/prompts/matias-leon.md`](docs/ai-usage/prompts/matias-leon.md) (first entry). In short: review the statement and last semester's two best repositories, then set up an agentic harness in each repo that validates commit names, branches and pull requests, prevents direct pushes, and logs every prompt with its date in one file per member.
 - **Result obtained:** `.githooks/` (commit-msg, pre-commit, pre-push), `.claude/` (shared settings, prompt-logging hook, git guard hook, `/start-task` and `/open-pr` commands), `.github/workflows/conventions.yml`, the PR template, `CLAUDE.md`, `CONTRIBUTING.md`, `scripts/setup-github.sh` and this file's skeleton.
 - **Team modifications:** _Pending — to be completed by the author after reviewing the generated files._
-- **Lessons learned / limitations:** _Pending — to be completed by the author._ Known limitations so far: the automatic log only captures Claude Code sessions opened inside the repository; other tools and sessions must be logged by hand.
+- **Lessons learned / limitations:** _Pending — to be completed by the author._ Known limitations so far: the automatic log only captures Claude Code sessions opened inside the repository; other tools and sessions must be logged by hand. AI error caught during setup: the first version of the `commit-msg` hook let an invalid commit through on Windows when git's output was piped (`git commit ... | head`); the verification run exposed it and it was fixed in `fix(git): keep hooks failing when their output pipe is closed`.
 
 ## Critical Evaluation
 
