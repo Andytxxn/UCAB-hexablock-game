@@ -1,0 +1,9 @@
+* text=auto
+
+# Hook scripts must keep LF endings on every OS or they break on macOS / Git Bash.
+.githooks/* text eol=lf
+*.sh text eol=lf
+*.mjs text eol=lf
+
+# Prompt logs are append-only: keep both sides instead of raising merge conflicts.
+docs/ai-usage/prompts/*.md merge=union

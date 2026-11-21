@@ -1,0 +1,13 @@
+# Stack-specific entries get added once the language is chosen.
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Personal Claude Code settings (shared ones live in .claude/settings.json)
+.claude/settings.local.json
+
+# OS
+.DS_Store
+Thumbs.db

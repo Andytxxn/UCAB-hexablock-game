@@ -1,0 +1,4 @@
+#!/bin/sh
+# Blocks commits on main/develop and on badly named branches.
+branch=$(git symbolic-ref --quiet --short HEAD) || exit 0 # detached HEAD (rebase in progress)
+exec sh "$(dirname "$0")/check-branch" "$branch"

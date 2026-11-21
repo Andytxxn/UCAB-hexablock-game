@@ -1,0 +1,28 @@
+#!/bin/sh
+# Validates the commit subject against Conventional Commits (project statement, section 6.2).
+# Also run by CI (.github/workflows/conventions.yml) on every PR commit and on the PR title.
+subject=$(sed -n '1p' "$1")
+
+case "$subject" in
+  "Merge "* | "Revert "* | "fixup! "* | "squash! "*) exit 0 ;;
+esac
+
+types='feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert'
+
+fail() {
+  {
+    echo "ERROR: invalid commit message: \"$subject\""
+    echo "  $1"
+    echo "  Format:  <type>(<scope>): <description>   (scope optional)"
+    echo "  Types:   $(echo "$types" | tr '|' ' ')"
+    echo "  Example: feat(engine): add generic HexBoard with axial coordinates"
+  } >&2
+  exit 1
+}
+
+printf '%s' "$subject" | grep -Eq "^($types)(\([a-z0-9-]+\))?!?: [^A-Z ].*[^. ]$" ||
+  fail "Use a valid type, a lowercase kebab-case scope, a lowercase start and no final period."
+[ "${#subject}" -le 100 ] || fail "Subject is longer than 100 characters."
+if printf '%s' "$subject" | LC_ALL=C grep -q '[^ -~]'; then
+  fail "Commit messages must be in English (ASCII characters only)."
+fi

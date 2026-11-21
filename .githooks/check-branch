@@ -1,0 +1,20 @@
+#!/bin/sh
+# Usage: check-branch <name>
+# Succeeds only for a valid working branch. Shared by pre-commit, pre-push and CI.
+case "$1" in
+  main | develop)
+    echo "ERROR: '$1' is protected. Work on your own branch and open a pull request." >&2
+    exit 1
+    ;;
+esac
+
+printf '%s' "$1" | grep -Eq '^(feature|fix|docs|chore|refactor|test|ci)/[a-z0-9]+(-[a-z0-9]+)*$' && exit 0
+
+{
+  echo "ERROR: invalid branch name '$1'."
+  echo "  Format:  <type>/<kebab-case-description>"
+  echo "  Types:   feature fix docs chore refactor test ci"
+  echo "  Example: feature/hex-board-geometry"
+  echo "  Rename:  git branch -m <new-name>"
+} >&2
+exit 1
