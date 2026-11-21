@@ -41,7 +41,7 @@ The backend lives in the sibling repository `UCAB-hexablock-api`.
   `ui`, `ci`, `readme`.
 - **Small, frequent commits**: one logical change each. The history is graded per member, so never bundle
   unrelated work and never commit on behalf of another member.
-- Finish with `/open-pr`: pull request into `develop`, reviewed and merged by a teammate.
+- Finish with `/open-pr`: pull request into `develop`.
 
 ## AI usage (statement section 7 — undocumented AI use is treated as plagiarism)
 

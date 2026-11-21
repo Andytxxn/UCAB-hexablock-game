@@ -47,7 +47,7 @@ test(engine): add unit tests for GameEngine with fake cell type
 
 1. Push your branch and open a pull request into `develop` (in Claude Code: `/open-pr`).
 2. The title is a Conventional Commit subject. Fill in the template checklist.
-3. The `conventions` check must pass and one teammate must approve. Do not merge your own pull request.
+3. The `conventions` check must pass before merging.
 4. `develop` is merged into `main` through a pull request titled `chore(release): <version>`.
 
 ## AI usage

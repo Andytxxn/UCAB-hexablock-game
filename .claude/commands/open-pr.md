@@ -13,4 +13,4 @@ Open a pull request for the current branch.
    Commit as `docs(ai-usage): log <topic>`, including the prompt log files.
 4. **Push** with `git push -u origin <branch>`.
 5. **Create the PR** with `gh pr create --base develop`. The title is a Conventional Commit subject (CI validates it); the body follows `.github/pull_request_template.md`, filled in.
-6. Print the PR URL. Never merge it: a teammate reviews and merges.
+6. Print the PR URL and stop. Merging is the user's call.
