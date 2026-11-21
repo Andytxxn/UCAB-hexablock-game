@@ -1,0 +1,10 @@
+#!/bin/sh
+# Blocks direct pushes to main/develop and pushes of badly named branches.
+# git feeds one line per pushed ref: <local ref> <local sha> <remote ref> <remote sha>
+while read -r local_ref _ remote_ref _; do
+  [ "$local_ref" = "(delete)" ] && continue # deleting a remote branch is always allowed
+  case "$remote_ref" in
+    refs/heads/*) sh "$(dirname "$0")/check-branch" "${remote_ref#refs/heads/}" || exit 1 ;;
+  esac
+done
+exit 0
