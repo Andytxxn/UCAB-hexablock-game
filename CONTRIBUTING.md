@@ -19,7 +19,7 @@ How the team works in this repository. The rules below are enforced three times:
 main  ←  develop  ←  <type>/<kebab-case-description>
 ```
 
-- `main` holds delivered versions; `develop` is the integration branch. Both are protected: no direct
+- `main` holds released versions; `develop` is the integration branch. Both are protected: no direct
   commits or pushes, changes arrive only through pull requests.
 - Working branches start from `develop`. Types: `feature`, `fix`, `docs`, `chore`, `refactor`, `test`, `ci`.
   Example: `feature/hex-board-geometry`. In Claude Code: `/start-task feature hex board geometry`.
@@ -35,7 +35,7 @@ main  ←  develop  ←  <type>/<kebab-case-description>
 - Types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`.
 - The scope is optional, lowercase kebab-case. The description starts in lowercase, has no final period,
   and the whole subject is at most 100 characters.
-- Commit small and often: one logical change per commit. Individual participation is graded from the history.
+- Commit small and often: one logical change per commit.
 
 ```
 feat(engine): add generic HexBoard with axial coordinates
@@ -52,7 +52,7 @@ test(engine): add unit tests for GameEngine with fake cell type
 
 ## AI usage
 
-Using AI is allowed only if it is documented (project statement, section 7).
+All AI usage must be documented.
 
 - **Automatic:** every prompt sent to Claude Code inside this repository is appended, with date, branch and
   session, to `docs/ai-usage/prompts/<your-git-name>.md`. Commit that file together with your work. Obvious

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // UserPromptSubmit hook: appends every prompt sent to Claude Code to
-// docs/ai-usage/prompts/<member>.md (project statement, section 7.2). One file per team member.
+// docs/ai-usage/prompts/<member>.md. One file per team member.
 import { execFileSync } from 'node:child_process';
 import { appendFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { userInfo } from 'node:os';

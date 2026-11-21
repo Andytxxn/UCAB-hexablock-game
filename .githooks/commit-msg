@@ -2,7 +2,7 @@
 # Windows git treats a hook killed by a closed output pipe (e.g. `git commit ... | head`) as success:
 # ignore SIGPIPE so the script always reaches its own exit status.
 trap "" PIPE
-# Validates the commit subject against Conventional Commits (project statement, section 6.2).
+# Validates the commit subject against Conventional Commits.
 # Also run by CI (.github/workflows/conventions.yml) on every PR commit and on the PR title.
 subject=$(sed -n '1p' "$1")
 
