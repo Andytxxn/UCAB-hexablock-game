@@ -1,4 +1,7 @@
 #!/bin/sh
+# Windows git treats a hook killed by a closed output pipe (e.g. `git commit ... | head`) as success:
+# ignore SIGPIPE so the script always reaches its own exit status.
+trap "" PIPE
 # Usage: check-branch <name>
 # Succeeds only for a valid working branch. Shared by pre-commit, pre-push and CI.
 case "$1" in
