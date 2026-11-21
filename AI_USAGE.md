@@ -24,7 +24,6 @@ The raw, automatic prompt logs (one file per team member) live in [`docs/ai-usag
 - **Prompt:** <literal transcription or faithful paraphrase, with a link to the raw log>
 - **Result obtained:** <code, design or explanation produced>
 - **Team modifications:** <what the team changed in the AI output, and why>
-- **Lessons learned / limitations:** <what worked, what did not>
 -->
 
 ### Entry 001 — Agentic harness and team workflow setup
@@ -35,7 +34,6 @@ The raw, automatic prompt logs (one file per team member) live in [`docs/ai-usag
 - **Prompt:** Literal transcription in [`docs/ai-usage/prompts/matias-leon.md`](docs/ai-usage/prompts/matias-leon.md) (first entry). In short: review the project requirements and two reference repositories, then set up an agentic harness in each repo that validates commit names, branches and pull requests, prevents direct pushes, and logs every prompt with its date in one file per member.
 - **Result obtained:** `.githooks/` (commit-msg, pre-commit, pre-push), `.claude/` (shared settings, prompt-logging hook, git guard hook, `/start-task` and `/open-pr` commands), `.github/workflows/conventions.yml`, the PR template, `CLAUDE.md`, `CONTRIBUTING.md`, `scripts/setup-github.sh` and this file's skeleton.
 - **Team modifications:** _Pending — to be completed by the author after reviewing the generated files._
-- **Lessons learned / limitations:** _Pending — to be completed by the author._ Known limitations so far: the automatic log only captures Claude Code sessions opened inside the repository; other tools and sessions must be logged by hand. AI error caught during setup: the first version of the `commit-msg` hook let an invalid commit through on Windows when git's output was piped (`git commit ... | head`); the verification run exposed it and it was fixed in `fix(git): keep hooks failing when their output pipe is closed`.
 
 ## Critical Evaluation
 
@@ -43,4 +41,5 @@ _To be completed before the final release._
 
 - **Approximate percentage of code written with AI assistance:**
 - **Cases where the AI produced incorrect or suboptimal results, and how they were detected and fixed:**
+  - 2026-11-21: the first version of the `commit-msg` hook let an invalid commit through on Windows when the output of git was piped (`git commit ... | head`). The verification run exposed it; fixed in `fix(git): keep hooks failing when their output pipe is closed`.
 - **Team reflection on the impact of AI on productivity and code quality:**

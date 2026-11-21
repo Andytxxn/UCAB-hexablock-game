@@ -47,8 +47,8 @@ The backend lives in the sibling repository `UCAB-hexablock-api`.
 
 - Every prompt is appended automatically to `docs/ai-usage/prompts/<member>.md`. Never edit or delete
   entries there, and stage that file with every commit.
-- Significant uses get a curated entry in `AI_USAGE.md` (`/open-pr` drafts them). "Team modifications" and
-  "Lessons learned" come from the human: ask, never invent.
+- Significant uses get a curated entry in `AI_USAGE.md` (`/open-pr` drafts them). "Team modifications"
+  come from the human: ask, never invent.
 - Architecture, generics, patterns and principles are **team decisions**: lay out options and trade-offs,
   do not decide silently. Every team member must be able to explain any line of the codebase, especially the
   generic types and the split of responsibilities between the engine and the variants.

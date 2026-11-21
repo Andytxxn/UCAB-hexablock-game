@@ -60,7 +60,7 @@ All AI usage must be documented.
 - **By hand:** prompts sent to any other tool (ChatGPT, Cursor, Copilot…) or from outside the repository
   must be added to your log file yourself.
 - **Curated:** before opening a pull request, add an entry to `AI_USAGE.md` for each significant use,
-  including what the team changed in the AI output and what was learned. `/open-pr` drafts it with you.
+  including what the team changed in the AI output. `/open-pr` drafts it with you.
 
 ## Changing the rules
 
