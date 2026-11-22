@@ -1,7 +1,7 @@
 # AI Usage Documentation
 
 **Repository:** UCAB-hexablock-game — HexaBlock Suite mobile client (generic engine + four variants)
-**Last updated:** 2026-11-21
+**Last updated:** 2026-11-22
 
 This file is the curated record of how AI tools are used in this project.
 The raw, automatic prompt logs (one file per team member) live in [`docs/ai-usage/prompts/`](docs/ai-usage/prompts/).
@@ -10,39 +10,39 @@ The raw, automatic prompt logs (one file per team member) live in [`docs/ai-usag
 
 | Tool | Version / Model | Role in the team workflow |
 | --- | --- | --- |
-| Claude Code (Anthropic) | Claude Fable 5.2 (`claude-fable-5-2`) | Repository harness setup: git hooks, conventions check in CI, automatic AI prompt logging; first-approach design document |
+| Claude Code (Anthropic) | Claude Fable 5.2 (`claude-fable-5-2`), Claude Opus 5.5 (`claude-opus-5-5`) | Repository harness setup: git hooks, conventions check in CI, automatic AI prompt logging; first-approach design document; testing rules |
 
 ## Usage Log
 
-<!-- Entry template: copy it, number consecutively, newest last.
+<!-- One entry per MAIN use of AI (a theme of work such as "agentic harness", "generic engine",
+"auth"), not one per session or pull request. When new work continues an existing theme, update that
+entry instead of adding a new one: extend the dates and branches, add one line to Prompts and to Result.
+Add a new entry only for a new theme. Keep each field short; the raw prompts are in the logs.
 
-### Entry NNN — <short title>
+### Entry NNN — <theme>
 
-- **Date:** YYYY-MM-DD · **Author:** <member> · **Branch / PR:** `<branch>` (#PR)
-- **Task:** <task or problem addressed>
+- **Dates:** YYYY-MM-DD → YYYY-MM-DD · **Authors:** <members> · **Branches / PRs:** `<branch>` (#PR), …
+- **Task:** <what this use of AI was for>
 - **Tool:** <tool and model>
-- **Prompt:** <literal transcription or faithful paraphrase, with a link to the raw log>
-- **Result obtained:** <code, design or explanation produced>
+- **Prompts:** <one line per main prompt: date and a faithful one-line summary; literal text in the raw log>
+- **Result obtained:** <what the AI produced, one line per prompt above>
 - **Team modifications:** <what the team changed in the AI output, and why>
 -->
 
-### Entry 001 — Agentic harness and team workflow setup
+### Entry 001 — Agentic harness and project setup
 
-- **Date:** 2026-11-21 · **Author:** Matias Leon · **Branch / PR:** `chore/project-harness`
-- **Task:** Configure both repositories so the team can work with Claude Code under shared rules for git conventions, branches, pull requests and AI usage documentation, before any stack is chosen.
-- **Tool:** Claude Code — Claude Fable 5.2
-- **Prompt:** Literal transcription in [`docs/ai-usage/prompts/matias-leon.md`](docs/ai-usage/prompts/matias-leon.md) (first entry). In short: review the project requirements and two reference repositories, then set up an agentic harness in each repo that validates commit names, branches and pull requests, prevents direct pushes, and logs every prompt with its date in one file per member.
-- **Result obtained:** `.githooks/` (commit-msg, pre-commit, pre-push), `.claude/` (shared settings, prompt-logging hook, git guard hook, `/start-task` and `/open-pr` commands), `.github/workflows/conventions.yml`, the PR template, `CLAUDE.md`, `CONTRIBUTING.md`, `scripts/setup-github.sh` and this file's skeleton.
+- **Dates:** 2026-11-21 → 2026-11-22 · **Authors:** Matias Leon · **Branches / PRs:** `chore/project-harness` (#1), `docs/solution-first-approach` (#3), `docs/testing-guidelines` (#4), `chore/condense-ai-usage`
+- **Task:** Prepare both repositories so the team can work with Claude Code under shared rules (git conventions, pull requests, testing, AI usage documentation) before any stack is chosen, plus a first design proposal to discuss.
+- **Tool:** Claude Code — Claude Fable 5.2, Claude Opus 5.5
+- **Prompts** (literal text in [`docs/ai-usage/prompts/matias-leon.md`](docs/ai-usage/prompts/matias-leon.md)):
+  - 2026-11-21: review the project statement and two reference repositories, then set up a harness that validates commit, branch and PR names, prevents direct pushes and logs every prompt per member.
+  - 2026-11-21: from the team's design notes, write one non-binding "solution first approach" document per repository, clearly labelled as AI-generated.
+  - 2026-11-22: add the TDD and testing rules of statement section 3.6 to `CLAUDE.md`, and keep `AI_USAGE.md` short by grouping entries by main use instead of by session.
+- **Result obtained:**
+  - `.githooks/` (commit-msg, pre-commit, pre-push), `.claude/` (prompt-logging and git guard hooks, `/start-task`, `/open-pr`), `.github/workflows/conventions.yml`, the PR template, `CLAUDE.md`, `CONTRIBUTING.md`, `scripts/setup-github.sh` and this file.
+  - [`docs/SOLUTION_FIRST_APPROACH.md`](docs/SOLUTION_FIRST_APPROACH.md): proposed layers, ports, patterns, how to add a fifth variant, open questions. Nothing in it is decided.
+  - "Testing (TDD)" section in `CLAUDE.md`; this grouped entry format and the matching `/open-pr` instructions.
 - **Team modifications:** _Pending — to be completed by the author after reviewing the generated files._
-
-### Entry 002 — Solution first approach document
-
-- **Date:** 2026-11-21 · **Author:** Matias Leon · **Branch / PR:** `docs/solution-first-approach`
-- **Task:** Write down a first, non-binding approach to the solution, so the team has a concrete starting point to discuss before deciding the architecture.
-- **Tool:** Claude Code — Claude Fable 5.2
-- **Prompt:** Literal transcription in [`docs/ai-usage/prompts/matias-leon.md`](docs/ai-usage/prompts/matias-leon.md) (entry of 2026-11-21, 20:50). In short: from the team's early design notes, create one document per repository with the initial design that was discussed (Clean Architecture layers), named and labelled so it is clear that it is an AI-generated first approach and not the architecture.
-- **Result obtained:** [`docs/SOLUTION_FIRST_APPROACH.md`](docs/SOLUTION_FIRST_APPROACH.md): a proposal for the four layers, their ports, the patterns and SOLID principles involved, how a fifth variant would be added, and a list of open questions for the team. Nothing in it is decided or validated with code.
-- **Team modifications:** _Pending — to be completed once the team reviews the document._
 
 ## Critical Evaluation
 

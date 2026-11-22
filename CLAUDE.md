@@ -75,8 +75,10 @@ Required suites:
 
 - Every prompt is appended automatically to `docs/ai-usage/prompts/<member>.md`. Never edit or delete
   entries there, and stage that file with every commit.
-- Significant uses get a curated entry in `AI_USAGE.md` (`/open-pr` drafts them). "Team modifications"
-  come from the human: ask, never invent.
+- `AI_USAGE.md` holds **one entry per main use** (a theme such as "agentic harness" or "generic engine"),
+  not one per session or PR. Continuing a theme updates its entry (dates, branches, one line in Prompts and
+  Result); only a new theme adds an entry. `/open-pr` drafts it. "Team modifications" come from the human:
+  ask, never invent.
 - Architecture, generics, patterns and principles are **team decisions**: lay out options and trade-offs,
   do not decide silently. Every team member must be able to explain any line of the codebase, especially the
   generic types and the split of responsibilities between the engine and the variants.

@@ -59,7 +59,8 @@ All AI usage must be documented.
   credentials are masked, but the repository is public: never paste secrets into a prompt.
 - **By hand:** prompts sent to any other tool (ChatGPT, Cursor, Copilot…) or from outside the repository
   must be added to your log file yourself.
-- **Curated:** before opening a pull request, add an entry to `AI_USAGE.md` for each significant use,
+- **Curated:** `AI_USAGE.md` has one entry per main use of AI (a theme of work), not one per session. Before
+  opening a pull request, update the entry of the theme you worked on, or add one if the theme is new,
   including what the team changed in the AI output. `/open-pr` drafts it with you.
 
 ## Changing the rules
