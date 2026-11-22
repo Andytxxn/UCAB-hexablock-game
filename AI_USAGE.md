@@ -10,7 +10,7 @@ The raw, automatic prompt logs (one file per team member) live in [`docs/ai-usag
 
 | Tool | Version / Model | Role in the team workflow |
 | --- | --- | --- |
-| Claude Code (Anthropic) | Claude Fable 5.2 (`claude-fable-5-2`) | Repository harness setup: git hooks, conventions check in CI, automatic AI prompt logging |
+| Claude Code (Anthropic) | Claude Fable 5.2 (`claude-fable-5-2`) | Repository harness setup: git hooks, conventions check in CI, automatic AI prompt logging; first-approach design document |
 
 ## Usage Log
 
@@ -34,6 +34,15 @@ The raw, automatic prompt logs (one file per team member) live in [`docs/ai-usag
 - **Prompt:** Literal transcription in [`docs/ai-usage/prompts/matias-leon.md`](docs/ai-usage/prompts/matias-leon.md) (first entry). In short: review the project requirements and two reference repositories, then set up an agentic harness in each repo that validates commit names, branches and pull requests, prevents direct pushes, and logs every prompt with its date in one file per member.
 - **Result obtained:** `.githooks/` (commit-msg, pre-commit, pre-push), `.claude/` (shared settings, prompt-logging hook, git guard hook, `/start-task` and `/open-pr` commands), `.github/workflows/conventions.yml`, the PR template, `CLAUDE.md`, `CONTRIBUTING.md`, `scripts/setup-github.sh` and this file's skeleton.
 - **Team modifications:** _Pending — to be completed by the author after reviewing the generated files._
+
+### Entry 002 — Solution first approach document
+
+- **Date:** 2026-11-21 · **Author:** Matias Leon · **Branch / PR:** `docs/solution-first-approach`
+- **Task:** Write down a first, non-binding approach to the solution, so the team has a concrete starting point to discuss before deciding the architecture.
+- **Tool:** Claude Code — Claude Fable 5.2
+- **Prompt:** Literal transcription in [`docs/ai-usage/prompts/matias-leon.md`](docs/ai-usage/prompts/matias-leon.md) (entry of 2026-11-21, 20:50). In short: from the team's early design notes, create one document per repository with the initial design that was discussed (Clean Architecture layers), named and labelled so it is clear that it is an AI-generated first approach and not the architecture.
+- **Result obtained:** [`docs/SOLUTION_FIRST_APPROACH.md`](docs/SOLUTION_FIRST_APPROACH.md): a proposal for the four layers, their ports, the patterns and SOLID principles involved, how a fifth variant would be added, and a list of open questions for the team. Nothing in it is decided or validated with code.
+- **Team modifications:** _Pending — to be completed once the team reviews the document._
 
 ## Critical Evaluation
 
