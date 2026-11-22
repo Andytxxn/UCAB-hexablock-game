@@ -24,12 +24,40 @@ The backend lives in the sibling repository `UCAB-hexablock-api`.
   documentable in the README with a real code reference. Bounded generics must be justified there too.
 - **AOP without AOP libraries**: decorators or proxies over the generic use cases. No logger calls inside
   business code.
-- **Tests**: unit (each variant's rules, plus the engine with a fake cell type), integration, and widget / UI
-  tests. AAA structure. Names: `should_[expected_result]_when_[condition]`. Use fakes and a fixed random
-  seed. Test behaviour, not implementation details.
+- **Tests**: TDD, see "Testing" below.
 - Levels of Hexa Fit (15+) and Hexa Sort (10+) are loaded from configuration files, not hard-coded.
 - Code, comments, commits, pull requests and the README are written **in English**. The app itself
   supports Spanish and English.
+
+## Testing (TDD, statement section 3.6)
+
+- **TDD is mandatory.** Red → green → refactor: write a failing test that states the expected behaviour, run
+  it and see it fail for the right reason, write the minimum code to pass, then refactor with the suite green.
+  No production code without a test that required it. Bug fixes start with a test that reproduces the bug.
+- **AAA** in every test: `// Arrange`, `// Act`, `// Assert` blocks, one action per test.
+- **Names**: `should_[expected_result]_when_[condition]`, e.g.
+  `should_clear_three_lines_when_piece_completes_all_axes`.
+- **Behaviour, not implementation.** Assert on outputs, returned state, persisted data, HTTP responses or what
+  the user sees, through the public API of the unit. Do not assert on private methods, internal fields, call
+  order or how many times a collaborator was called, unless that interaction *is* the behaviour (e.g. a
+  cache decorator must not hit the repository twice). A refactor that keeps behaviour must not break tests.
+- **Test doubles only at the boundaries** (ports: repositories, network, clock, random generator with a fixed
+  seed). Prefer hand-written fakes over mocking libraries; never mock the unit under test or value objects.
+- Tests are deterministic and independent: no real network, no shared mutable state, no order dependence.
+- All suites run in CI on every pull request; a red suite blocks the merge.
+
+Required suites:
+
+- **Unit**: each variant's rules on their own (line clearing on the 3 axes, exact figure coverage, transfer
+  cascade, merge on collision), every use case and service, and the **generic engine with a fake cell type**
+  (test double), proving the engine depends on no concrete variant.
+- **Integration**: use cases with real repositories on in-memory storage; save and restore progress end to end
+  for each variant.
+- **Widget / UI**: components render and respond to user interaction; navigation between screens (home,
+  game selection, level selection, match, victory, defeat). Find widgets by key, text or semantics, not by
+  widget-tree structure.
+- **Contract**: consumer tests (Pact or equivalent, https://docs.pact.io/) for every API call the app makes;
+  the generated contract is what `UCAB-hexablock-api` verifies.
 
 ## Git workflow (enforced by `.githooks/`, CI and branch protection)
 
