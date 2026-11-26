@@ -6,9 +6,10 @@ The backend lives in the sibling repository `UCAB-hexablock-api`.
 
 ## Status
 
-- **Stack: not decided yet.** Do not scaffold a project, add dependencies or pick a language or framework
-  until the team records the decision here. If a task needs it, stop and ask.
-- Commands (fill in once the stack exists): install `TBD` · lint `TBD` · test `TBD` · run `TBD`
+- **Stack (decided 2026-11-22):** TypeScript (strict), React Native + Expo SDK 58, expo-sqlite + Drizzle ORM,
+  expo-router, react-native-svg, gesture-handler + reanimated, i18next, expo-audio, zod, Jest. Node.js 24.20, npm only.
+- The engine and the use cases stay framework-free: no imports from React Native, Expo or Drizzle there.
+- Commands: install `npm ci` · lint `TBD` · test `TBD` · run `TBD`
 
 ## Engineering rules
 
