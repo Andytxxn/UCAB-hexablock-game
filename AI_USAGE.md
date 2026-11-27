@@ -1,7 +1,7 @@
 # AI Usage Documentation
 
 **Repository:** UCAB-hexablock-game — HexaBlock Suite mobile client (generic engine + four variants)
-**Last updated:** 2026-11-22
+**Last updated:** 2026-11-27
 
 This file is the curated record of how AI tools are used in this project.
 The raw, automatic prompt logs (one file per team member) live in [`docs/ai-usage/prompts/`](docs/ai-usage/prompts/).
@@ -10,7 +10,7 @@ The raw, automatic prompt logs (one file per team member) live in [`docs/ai-usag
 
 | Tool | Version / Model | Role in the team workflow |
 | --- | --- | --- |
-| Claude Code (Anthropic) | Claude Fable 5.2 (`claude-fable-5-2`), Claude Opus 5.5 (`claude-opus-5-5`) | Repository harness setup: git hooks, conventions check in CI, automatic AI prompt logging; first-approach design document; testing rules |
+| Claude Code (Anthropic) | Claude Fable 5.2 (`claude-fable-5-2`), Claude Opus 5.5 (`claude-opus-5-5`) | Repository harness setup: git hooks, conventions check in CI, automatic AI prompt logging; first-approach design document; testing rules; Expo project scaffold, Clean Architecture folders and dependency-rule test |
 
 ## Usage Log
 
@@ -44,6 +44,21 @@ Add a new entry only for a new theme. Keep each field short; the raw prompts are
   - "Testing (TDD)" section in `CLAUDE.md`; this grouped entry format and the matching `/open-pr` instructions.
 - **Team modifications:** _Pending — to be completed by the author after reviewing the generated files._
 
+### Entry 002 — Project scaffold and Clean Architecture structure
+
+- **Dates:** 2026-11-27 → 2026-11-27 · **Authors:** Matias Leon · **Branches / PRs:** `chore/scaffold-expo-app`
+- **Task:** Turn the decided stack into a runnable Expo project laid out by Clean Architecture rings, with a test that keeps dependencies pointing inward.
+- **Tool:** Claude Code — Claude Opus 5.5
+- **Prompts** (literal text in [`docs/ai-usage/prompts/matias-leon.md`](docs/ai-usage/prompts/matias-leon.md)):
+  - 2026-11-27: suggest a Clean Architecture folder structure for the chosen stack, the commands to initialise the project, and the subfolders of `src/`; then deliver the proposal as a Markdown file.
+  - 2026-11-27: run the initialisation, install the stack, create the folders (with `application/ports` split into `in` and `out`), add a first architecture test for the inward dependency rule, and document the structure mapping domain → entities, application → use cases, presentation and infrastructure → interface adapters.
+  - 2026-11-27: split the work into small commits and add a shared Prettier configuration.
+- **Result obtained:**
+  - A Markdown proposal of the structure, the init commands and the open team decisions (not committed).
+  - Expo SDK 58 app with expo-router and the stack dependencies, the `src/` ring folders, `tests/architecture/dependency-rule.test.ts`, and the "Architecture" and "Project structure" sections of the README.
+  - `.prettierrc.json`, `.prettierignore`, Prettier wired into ESLint, `format` scripts and VS Code format-on-save settings.
+- **Team modifications:** the AI proposed a single `application/ports/` folder; the team split it into `ports/in/` (driving ports) and `ports/out/` (driven ports).
+
 ## Critical Evaluation
 
 _To be completed before the final release._
@@ -51,4 +66,5 @@ _To be completed before the final release._
 - **Approximate percentage of code written with AI assistance:**
 - **Cases where the AI produced incorrect or suboptimal results, and how they were detected and fixed:**
   - 2026-11-21: the first version of the `commit-msg` hook let an invalid commit through on Windows when the output of git was piped (`git commit ... | head`). The verification run exposed it; fixed in `fix(git): keep hooks failing when their output pipe is closed`.
+  - 2026-11-27: `npx expo install <packages> -- --save-dev`, run from Git Bash on Windows, put Jest and Prettier in `dependencies` instead of `devDependencies`. Detected by reading `package.json` after the install; the packages were reinstalled with `npm install -D` before committing.
 - **Team reflection on the impact of AI on productivity and code quality:**
