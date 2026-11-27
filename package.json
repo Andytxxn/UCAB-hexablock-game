@@ -46,8 +46,11 @@
     "drizzle-kit": "^0.31.11",
     "eslint": "^9.0.0",
     "eslint-config-expo": "~58.0.4",
+    "eslint-config-prettier": "^10.1.9",
+    "eslint-plugin-prettier": "^5.5.7",
     "jest": "~30.5.2",
     "jest-expo": "~58.0.16",
+    "prettier": "^3.10.1",
     "typescript": "~6.0.3"
   },
   "scripts": {
@@ -57,7 +60,9 @@
     "web": "expo start --web",
     "lint": "expo lint",
     "test": "jest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "private": true,
   "jest": {

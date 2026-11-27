@@ -1,0 +1,13 @@
+# Generated
+package-lock.json
+drizzle/
+pacts/
+coverage/
+.expo/
+assets/expo.icon/
+
+# Shared Claude Code harness, maintained separately
+.claude/
+
+# Markdown is written by hand; prompt logs are append-only and must never be rewritten
+*.md
