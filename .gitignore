@@ -1,4 +1,37 @@
-# Stack-specific entries get added once the language is chosen.
+# Dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.pem
+
+# Generated native folders (Continuous Native Generation)
+/ios
+/android
+
+# Metro
+.metro-health-check*
+
+# Debug logs
+npm-debug.*
+
+# TypeScript
+*.tsbuildinfo
+
+# Test output
+coverage/
 
 # Secrets
 .env

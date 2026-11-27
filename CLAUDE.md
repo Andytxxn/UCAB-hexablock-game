@@ -9,7 +9,9 @@ The backend lives in the sibling repository `UCAB-hexablock-api`.
 - **Stack (decided 2026-11-22):** TypeScript (strict), React Native + Expo SDK 58, expo-sqlite + Drizzle ORM,
   expo-router, react-native-svg, gesture-handler + reanimated, i18next, expo-audio, zod, Jest. Node.js 24.20, npm only.
 - The engine and the use cases stay framework-free: no imports from React Native, Expo or Drizzle there.
-- Commands: install `npm ci` · lint `TBD` · test `TBD` · run `TBD`
+- Commands: install `npm ci` · lint `npx expo lint` · format `npm run format` · typecheck `npm run typecheck` ·
+  test `npm test` · run `npx expo start`. Add Expo packages with `npx expo install <package>`, not `npm install`.
+- Folder structure and the Clean Architecture ring of each folder: README, "Architecture" and "Project structure".
 
 ## Engineering rules
 
@@ -20,7 +22,7 @@ The backend lives in the sibling repository `UCAB-hexablock-api`.
   variant must be addable with new classes or configuration only (`docs/EXTENSIBILITY.md`).
 - **Clean Architecture**, four layers, dependencies point inward only. The engine and the variant rules live
   in the domain and import nothing from the UI framework, storage or network. Use cases are generic or
-  parameterized by variant: never one per game.
+  parameterized by variant: never one per game. `tests/architecture/dependency-rule.test.ts` enforces the rule.
 - **SOLID and GoF patterns** (Strategy and Abstract Factory are mandatory): each one used must be
   documentable in the README with a real code reference. Bounded generics must be justified there too.
 - **AOP without AOP libraries**: decorators or proxies over the generic use cases. No logger calls inside

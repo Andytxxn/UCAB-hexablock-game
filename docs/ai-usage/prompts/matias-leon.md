@@ -23,3 +23,19 @@ Raw, automatic log of every prompt sent to Claude Code in this repository
 ## 2026-11-22 11:31:00 UTC-04:00 · `docs/testing-guidelines` · session `be90afb5` (added by hand: session started outside the repository)
 
 > agrega en los claude.md que se seguira TDD, y se realizaran pruebas unitarias (siguiendo AAA y la convencion should_[resultado_esperado]_when_[condicion]), de integracion, UI y de contrato, ademas que las pruebas deben verificar comportamiento, no detalles de implementacion,es decir, que no sean fragiles, lee el apartado de pruebas del enunciado para garantizar que los agentes implementen el testing correctamente, haz PR de esto, luego modifica la configuracion para evitar que AI_USAGE crezca tanto, ahorita como esta, cada sesion crearia una nueva entrada en el archivo, que se mantenga mas resumido colocando los usos principales (por ejemplo, lo de esta sesion y las dos entradas anteriores podrian guardarse como una sola entrada de configuracion del arnes agentico)
+
+## 2026-11-27 10:28:05 UTC-04:00 · `develop` · session `de464e1d`
+
+> Sugiere una estructura de carpetas para el proyecto segun la arquitectura clean y el stack seleccionado, dime que comandos tengo que ejecutar para inicializar el proyecto (crear las carpetas que necesitan los frameworks) y dentro de la carpeta src generada por el framework dime cuales subcarpetas deberian estar para seguir la arquitectura clean
+
+## 2026-11-27 10:37:23 UTC-04:00 · `develop` · session `de464e1d`
+
+> en la terminal no se ve bien tu planteamiento, dame lo que me dijiste en un .md
+
+## 2026-11-27 10:53:09 UTC-04:00 · `develop` · session `de464e1d`
+
+> Apruebo tu propuesta, ejecuta los comandos para inicializar el proyecto, instalar las dependencias y librerias, y crea las carpetas y subcarpetas que mencionas (pero en la carpeta de ports de aplication agrega una carpeta in y out para distinguir los driving y driven ports). Luego, agrega el primer test de arquitectrura que verifique la regla de dependencia hacia adentro. finalmente, actualiza la documentacion sobre la estructura del proyecto, indica que se esta siguiendo clean architecture, donde domain->entities, application-> use cases, (presentation e infraestructure) -> interface adapters.
+
+## 2026-11-27 11:22:32 UTC-04:00 · `chore/scaffold-expo-app` · session `de464e1d`
+
+> si, dividelo en commits pequenios, ademas, agregar una config de prettier para que el codigo este bien formateado para todos los devs
